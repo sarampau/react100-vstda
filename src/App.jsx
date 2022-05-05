@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className='container'>
       <h1>Very Simple Todo App</h1>
-        <p>Track all of the things</p>
+        <p className='p-header'>Track all of the things</p>
         <hr />
         <div className='box'>
           <Input />
