@@ -8,8 +8,8 @@ const Todos = (props) => {
       {
         todos.map(todo => (
           todo.isEditing === false ?
-            <div
-              className={ todo.priority === '1' ? 'low' : todo.priority === '2' ? 'medium' : 'high' }
+            <li
+              className={ todo.priority === '1' ? 'success' : todo.priority === '2' ? 'warning' : 'danger' }
               key={ todo.id }
             >
               <input
@@ -20,19 +20,19 @@ const Todos = (props) => {
               <p className={ todo.isChecked ? 'p-linethrough' : 'p' }>{todo.todo}</p>
               <button
                 type='button'
-                className='edit-button'
+                className='edit-todo'
                 onClick={ () => props.handleEdit(todo.id, todo.todo) }
               >
                 <span className='glyphicon glyphicon-edit' />
               </button>
               <button
                 type='button'
-                className='delete-button'
+                className='delete-todo'
                 onClick={ () => props.handleDelete(todo.id) }
               >
                 <span className='glyphicon glyphicon-trash' />
               </button>
-            </div>
+            </li>
           :
             <Edit
               todo={ todo }

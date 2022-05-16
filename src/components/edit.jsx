@@ -3,7 +3,7 @@ import React from 'react';
 const Edit = (props) => {
   const todo = props.todo;
   return (
-    <div className={ todo.priority === '1' ? 'low-edit' : todo.priority === '2' ? 'medium-edit' : 'high-edit' } key={ todo.id }>
+    <div className={ todo.priority === '1' ? 'success-edit' : todo.priority === '2' ? 'warning-edit' : 'danger-edit' } key={ todo.id }>
       <p className='p-edit'>Description</p>
       <textarea
         className='update-todo-text'
@@ -23,7 +23,7 @@ const Edit = (props) => {
       </select>
       <button
         className='update-todo'
-        id={ todo.priority === '1' ? 'low-edit-button' : todo.priority === '2' ? 'medium-edit-button' : 'high-edit-button' }
+        id={ todo.priority === '1' ? 'success-edit-button' : todo.priority === '2' ? 'warning-edit-button' : 'danger-edit-button' }
         onClick={ () => props.handleOnClickEdit(todo.id) }
       >
         Save

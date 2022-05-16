@@ -15,7 +15,7 @@ const Input = (props) => {
         />
         <p>How much of a priority is this?</p>
         <select
-          className='create-todo-priority form-control'
+          className='create-todo-priority'
           onChange={ e => props.handlePriority(e) }
           value={ props.priority }
         >

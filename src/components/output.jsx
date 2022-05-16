@@ -29,7 +29,7 @@ const Output = (props) => {
 };
 
 Output.propTypes = {
-  todos: React.PropTypes.arrayOf,
+  todos: React.PropTypes.arrayOf(React.PropTypes.object),
   handleCheckbox: React.PropTypes.func,
   handleEdit: React.PropTypes.func,
   handleEditTodo: React.PropTypes.func,
