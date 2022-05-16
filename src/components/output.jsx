@@ -16,12 +16,26 @@ const Output = (props) => {
       :
         <Todos
           todos={ props.todos }
-          isChecked={ props.isChecked }
           handleCheckbox={ props.handleCheckbox }
+          handleEdit={ props.handleEdit }
+          handleEditTodo={ props.handleEditTodo }
+          handleEditPriority={ props.handleEditPriority }
+          handleOnClickEdit={ props.handleOnClickEdit }
+          handleDelete={ props.handleDelete }
         />
       }
     </div>
   );
+};
+
+Output.propTypes = {
+  todos: React.PropTypes.arrayOf,
+  handleCheckbox: React.PropTypes.func,
+  handleEdit: React.PropTypes.func,
+  handleEditTodo: React.PropTypes.func,
+  handleEditPriority: React.PropTypes.func,
+  handleOnClickEdit: React.PropTypes.func,
+  handleDelete: React.PropTypes.func
 };
 
 export default Output;

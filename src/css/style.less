@@ -63,7 +63,7 @@ h1 {
 
 .create-todo-priority {
   width: 90%;
-  height: 30px;
+  height: 32px;
   margin-left: 5%;
 }
 
@@ -78,7 +78,7 @@ h1 {
 
 }
 
-.button {
+.create-todo {
   color: white;
   font-weight: bold;
   background-color: #5cb952;
@@ -132,6 +132,7 @@ h1 {
   color: #3a7736;
   background-color: #dff0d6;
   height: 60px;
+  border-top: 1px solid #d8d3d3;
 }
 
 .medium {
@@ -141,6 +142,7 @@ h1 {
   color: #8a795a;
   background-color: #fbf8e2;
   height: 60px;
+  border-top: 1px solid #d8d3d3;
 }
 
 .high {
@@ -150,6 +152,7 @@ h1 {
   color: #a95068;
   background-color: #f1dedd;
   height: 60px;
+  border-top: 1px solid #d8d3d3;
 }
 
 input[type=checkbox] {
@@ -159,6 +162,9 @@ input[type=checkbox] {
 
 .p {
   margin-left: 2%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .p-linethrough {
@@ -166,39 +172,111 @@ input[type=checkbox] {
   text-decoration: line-through;
 }
 
-// ---------------  Below is styling that was part of initial project ---------------
+.edit-button {
+  margin-left: auto;
+  color: #3b7292;
+  background: #00000000;
+  border: 0px;
+}
 
-// .no-padding {
-//   padding: 0 !important;
-// }
+.delete-button {
+  margin-left: 1%;
+  margin-right: 3%;
+  color: #b05954;
+  background: #00000000;
+  border: 0px;
+}
 
-// .no-margin {
-//   margin: 0 !important;
-// }
+//  --------------- EDIT -------------------
 
-// .white {
-//   color: white !important;
-// }
+.low-edit {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  color: #3a7736;
+  background-color: #dff0d6;
+  height: 255px;
+  border-top: 1px solid #d8d3d3;
+}
 
-// .strike-through {
-//   text-decoration: line-through;
-// }
+.medium-edit {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  color: #8a795a;
+  background-color: #fbf8e2;
+  height: 255px;
+  border-top: 1px solid #d8d3d3;
+}
 
-// textarea {
-//   width: 100%;
-//   max-width: 100%;
-//   min-height: 8em;
-//   max-height: 16em;
-// }
+.high-edit {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  color: #a95068;
+  background-color: #f1dedd;
+  height: 255px;
+  border-top: 1px solid #d8d3d3;
+}
 
-// strong + small {
-//   display: block;
-// }
+.update-todo-text{
+  width: 94%;
+  height: 115px;
+  margin-left: 3%;
+  color: #000000;
+  font-weight: 400;
+}
 
-// input[type=checkbox] {
-//   margin-right: 1em;
-// }
+.update-todo-priority {
+  width: 250px;
+  height: 32px;
+  margin-left: 3%;
+  color: #555555;
+  font-weight: 400;
+}
 
-// div.pull-right a {
-//   margin-left: 1em;
-// }
+.p-edit {
+  margin-top: 10px;
+  margin-bottom: 3px;
+  margin-left: 3%;
+  font-weight: 600;
+}
+
+#low-edit-button {
+  width: 70px;
+  height: 40px;
+  color: white;
+  background-color: #5cb952;
+  border-radius: 5px;
+  border: 0px;
+  font-weight: bold;
+  align-self: end;
+  margin-right: 3%;
+  margin-bottom: 10px;
+}
+
+#medium-edit-button {
+  width: 70px;
+  height: 40px;
+  color: #373737;
+  background-color: #f3f307;
+  border-radius: 5px;
+  border: 0px;
+  font-weight: bold;
+  align-self: end;
+  margin-right: 3%;
+  margin-bottom: 10px;
+}
+
+#high-edit-button {
+  width: 70px;
+  height: 40px;
+  color: white;
+  background-color: #e92c6c;
+  border-radius: 5px;
+  border: 0px;
+  font-weight: bold;
+  align-self: end;
+  margin-right: 3%;
+  margin-bottom: 10px;
+}

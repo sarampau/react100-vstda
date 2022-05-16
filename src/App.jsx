@@ -7,25 +7,31 @@ class App extends Component {
     super(props);
 
     this.state = {
-      newTodo: '',
+      todo: '',
       priority: '',
-      todos: [],
-      isChecked: false
+      editTodo: '',
+      editPriority: '',
+      todos: []
 
     };
-    this.handleNewTodoText = this.handleNewTodoText.bind(this);
-    this.handleNewPriority = this.handleNewPriority.bind(this);
+    this.handleTodoText = this.handleTodoText.bind(this);
+    this.handlePriority = this.handlePriority.bind(this);
     this.handleOnClick = this.handleOnClick.bind(this);
     this.handleCheckbox = this.handleCheckbox.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleEditTodo = this.handleEditTodo.bind(this);
+    this.handleEditPriority = this.handleEditPriority.bind(this);
+    this.handleOnClickEdit = this.handleOnClickEdit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
-  handleNewTodoText(e) {
+  handleTodoText(e) {
     this.setState({
-      newTodo: e.target.value
+      todo: e.target.value
     });
   }
 
-  handleNewPriority(e) {
+  handlePriority(e) {
     this.setState({
       priority: e.target.value
     });
@@ -34,18 +40,91 @@ class App extends Component {
   handleOnClick() {
     const todos = this.state.todos;
     const priority = this.state.priority;
-    const newTodo = this.state.newTodo;
-    todos.push([newTodo, priority]);
+    const todo = this.state.todo;
+    const id = Date.now();
+    const isChecked = false;
+    const isEditing = false;
+    const obj = {
+      todo,
+      priority,
+      id,
+      isChecked,
+      isEditing
+    };
+    if (todos === '') {
+      alert('Must add a todo');
+    }
+    if (priority === '') {
+      alert('Must select a priority');
+    } else {
+      todos.push(obj);
+      this.setState({
+        todos,
+        todo: '',
+        priority: ''
+      });
+    }
+  }
+
+  handleCheckbox(id) {
+    const todos = this.state.todos;
+    const i = todos.findIndex(obj => obj.id === id);
+    todos[i].isChecked = !todos[i].isChecked;
     this.setState({
-      todos,
-      newTodo: '',
-      priority: ''
+      todos
     });
   }
 
-  handleCheckbox() {
+  handleEdit(id) {
+    const todos = this.state.todos;
+    const i = todos.findIndex(obj => obj.id === id);
+    todos[i].isEditing = !todos[i].isEditing;
+    const editTodo = todos[i].todo;
+    const editPriority = todos[i].priority;
     this.setState({
-      isChecked: !this.state.isChecked
+      todos,
+      editTodo,
+      editPriority
+    });
+  }
+
+  handleEditTodo(e) {
+    let editTodo = this.state.editTodo;
+    editTodo = e.target.value;
+    this.setState({
+      editTodo
+    });
+  }
+
+  handleEditPriority(e) {
+    let editPriority = this.state.priority;
+    editPriority = e.target.value;
+    this.setState({
+      editPriority
+    });
+  }
+
+  handleOnClickEdit(id) {
+    const todos = this.state.todos;
+    const editTodo = this.state.editTodo;
+    const editPriority = this.state.editPriority;
+    const i = todos.findIndex(obj => obj.id === id);
+    todos[i].todo = editTodo;
+    todos[i].priority = editPriority;
+    todos[i].isEditing = !todos[i].isEditing;
+    this.setState({
+      todos,
+      editTodo: '',
+      editPriority: ''
+    });
+  }
+
+  handleDelete(id) {
+    const todos = this.state.todos;
+    const i = todos.findIndex(obj => obj.id === id);
+    todos.splice(i, 1);
+    this.setState({
+      todos
     });
   }
 
@@ -57,14 +136,20 @@ class App extends Component {
         <hr />
         <div className='box'>
           <Input
-            handleNewTodoText={ this.handleNewTodoText }
-            handleNewPriority={ this.handleNewPriority }
+            todo={ this.state.todo }
+            priority={ this.state.priority }
+            handleTodoText={ this.handleTodoText }
+            handlePriority={ this.handlePriority }
             handleOnClick={ this.handleOnClick }
           />
           <Output
             todos={ this.state.todos }
-            isChecked={ this.state.isChecked }
             handleCheckbox={ this.handleCheckbox }
+            handleEdit={ this.handleEdit }
+            handleEditTodo={ this.handleEditTodo }
+            handleEditPriority={ this.handleEditPriority }
+            handleOnClickEdit={ this.handleOnClickEdit }
+            handleDelete={ this.handleDelete }
           />
         </div>
       </div>
